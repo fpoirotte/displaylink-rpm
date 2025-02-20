@@ -1,6 +1,6 @@
 %{!?_daemon_version:%global _daemon_version 6.1.0-17}
 %{!?_version:%global _version 1.14.7}
-%{!?_release:%global _release 4}
+%{!?_release:%global _release 5}
 
 # Disable RPATH since DisplayLinkManager contains this.
 # Fedora 35 enforces this check and will stop rpmbuild from
@@ -63,6 +63,8 @@ BuildRequires:  systemd-rpm-macros
 Requires: epel-release
 %endif
 
+Requires(pre):   dkms
+Requires(post):  dkms
 Requires:   dkms
 Requires:   %{kernel_pkg_name} >= 4.15, %{kernel_pkg_name}-devel >= 4.15
 Requires:   make
